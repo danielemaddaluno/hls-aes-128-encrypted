@@ -60,7 +60,7 @@ read encKeys
 printf "\n"
 
 decKeys=$(node decryptKeys.js $encKeys)
-printf "Decoded keys in hex are:\n$decKeys\n\n"
+printf "Decrypted keys in hex are:\n$decKeys\n\n"
 
 echo "Enter the m3u8 url:"  
 read m3u8url
