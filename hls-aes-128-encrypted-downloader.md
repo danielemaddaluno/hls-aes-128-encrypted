@@ -55,13 +55,16 @@ printf "Decoded keys in hex are:\n$decKeys\n\n"
 echo "Enter the m3u8 url:"  
 read m3u8url
 # The process that download the file and decrypt it
-.hlsdl/hlsdl -K $decKeys $m3u8url
+cd hlsdl
+./hlsdl -K $decKeys $m3u8url
+cd ..
+mv --backup=numbered hlsdl/000_hls_output.ts ./
 ```
 and press Enter
 
 ## Download the file from the Google Cloud Shell folder interface
 You can download the `.ts` file directly from the <walkthrough-editor-spotlight spotlightId="file-explorer">file explorer</walkthrough-editor-spotlight>.
-Right click on the <walkthrough-editor-open-file filePath="000_hls_output.ts">`.ts file`</walkthrough-editor-open-file> and then click `download`.
+Right click on the `.ts file` and then click `download`.
 
 ## Congratulations
 Congratulations!
