@@ -74,7 +74,7 @@ and press Enter
 
 ## Download the file from the Google Cloud Shell folder interface
 You can download the `.ts` file directly from the <walkthrough-editor-spotlight spotlightId="file-explorer">file explorer</walkthrough-editor-spotlight>.
-Right click on the `.ts file` and then click `download`.
+Right click on the `000_hls_output.ts file` and then click `download`.
 
 ## Congratulations
 Congratulations!
