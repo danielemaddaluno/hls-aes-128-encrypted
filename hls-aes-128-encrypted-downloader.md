@@ -15,46 +15,56 @@ sudo apt-get install libcurl4-openssl-dev
 and press Enter
 
 ## Install hlsdl
-Copy this command in the shell:
+The following command will:
+- remove `hlsdl` the folder if exists
+- clone the `hlsdl` repository
+- change directory, inside the hlsdl folder
+- clone the `hlsdl` repository
+- compile hlsdl
+- go back on the parent directory
+
+Copy the command in the shell:
 ```sh
-# Remove the folder if exists
 rm -rf hlsdl
-# Clone the hlsdl repository
 git clone https://github.com/selsta/hlsdl
-# Move inside the hlsdl folder
 cd hlsdl
-# Compile hlsdl
 make
-# Go back on the parent directory
 cd ..
 ```
+
 and press Enter
 
 ## Install node with crypto-js
-Copy this command in the shell:
+The following command will:
+- install node and npm
+- install the crypto-js lib for node
+
+Copy the command in the shell:
 ```sh
-# Install node and npm
 nvm install stable
-# Install the crypto-js lib for node
 npm i crypto-js
 ```
 and press Enter
 
 ## Download an HLS AES-128 encrypted video
-Copy this command in the shell:
+The following command will:
+- give the encrypted keys used to encrypt the video. Use something like [The Stream Detector](https://chrome.google.com/webstore/detail/the-stream-detector/iakkmkmhhckcmoiibcfjnooibphlobak) to find the URI streams, then look for something like: `EXT-X-KEY:METHOD=AES-128,URI=`, open that URI and copy the response, that will be the encrypted keys.
+- compute the decrypted keys used to encrypt the video
+- insert the he m3u8 url to download the video. You can easily get that using [The Stream Detector](https://chrome.google.com/webstore/detail/the-stream-detector/iakkmkmhhckcmoiibcfjnooibphlobak).
+- launch hlsdl to download the video file decrypted
+
+Copy the command in the shell:
 ```sh
-# The encrypted keys used to encrypt the video
 echo "Enter the user encrypted keys:"  
 read encKeys
 printf "\n"
-# The decrypted keys used to encrypt the video
+
 decKeys=$(node decryptKeys.js $encKeys)
 printf "Decoded keys in hex are:\n$decKeys\n\n"
 
-# The m3u8 url to download the video
 echo "Enter the m3u8 url:"  
 read m3u8url
-# The process that download the file and decrypt it
+
 cd hlsdl
 ./hlsdl -K $decKeys $m3u8url
 cd ..
